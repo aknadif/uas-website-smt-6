@@ -11,9 +11,10 @@
 </div>
 
 <?php if(session()->getFlashdata('pesan')) : ?>
-<div class="alert alert-success mt-4" role="alert">
-  <?= session()->getFlashdata('pesan'); ?>
-</div>
+    <div class="alert alert-warning mt-4 alert-dismissible fade show" role="alert"> 
+    <?= session()->getFlashdata('pesan'); ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+    </div>
 <?php endif; ?>
 
     <div class="row mt-4">
@@ -40,8 +41,14 @@
                 <td><?= $b['jumlah']; ?></td>
                 <td class="text-center">
                 <a href="<?= base_url('/PHP/UTS-Semester-6/public/barang'); ?>/<?= $b['id']; ?>" type="button" class="btn btn-primary btn-sm">Detail</a>
-                <a href="#" type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ubahModal">Ubah</a>
-                <a href="#" type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal">Hapus</a>
+                <a href="<?= base_url('/PHP/UTS-Semester-6/public/barang/ubah'); ?>/<?= $b['id']; ?>" type="button" class="btn btn-warning btn-sm">Ubah</a>
+
+                <form action="<?= base_url('/PHP/UTS-Semester-6/public/barang/delete'); ?>/<?= $b['id']; ?>" method="post" class="d-inline">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus ini?');"> Hapus</button>
+                </form>
+
                 </td>
                 </tr>
                 <?php endforeach; ?>

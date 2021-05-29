@@ -36,7 +36,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'barang::index');
 $routes->get('/barang/create', 'barang::create');
-$routes->get('/barang/(:segment)', 'Barang::detail/$1');
+$routes->get('/barang/ubah/(:segment)', 'barang::ubah/$1');
+$routes->delete('/barang/(:num)', 'Barang:delete/$1');
+$routes->get('/barang/(:any)', 'Barang::detail/$1');
 
 /*
  * --------------------------------------------------------------------

@@ -35,22 +35,64 @@ class Barang extends BaseController{
 
     public function create()
     {
+        session();
         $data=[
-            'nama_barang' => 'Form Tambah Data Barang'
+            'nama_barang' => 'Form Tambah Data Barang',
+            'validation' => \Config\Services::validation()
         ];
         return view('barang/create', $data);
     }
 
     public function save()
     {
+        // Validasi Input
+        if(!$this->validate([
+            'nama_barang' => 'required'
+        ])){
+            $validation = \Config\Services::validation();
+            return redirect()->to('/PHP/UTS-Semester-6/public/barang/create')->with('validation', $validation);
+        }
+
        $this->barangModel->save([
            'nama_barang' => $this->request->getVar('nama_barang'),
            'harga_jual' => $this->request->getVar('harga_jual'),
            'jumlah' => $this->request->getVar('jumlah'),
        ]);
 
-       session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+       session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
 
        return redirect()->to(base_url('/PHP/UTS-Semester-6/public/barang/')); 
+    }
+
+    public function delete($id)
+    {
+        $this->barangModel->delete($id);
+        session()->setFlashdata('pesan', 'Data berhasil dihapus.');
+        return redirect()->to(base_url('/PHP/UTS-Semester-6/public/barang/')); 
+    }
+
+    public function ubah($id)
+    {
+        session();
+        $data=[
+            'nama_barang' => 'Form Ubah Data Barang',
+            'validation' => \Config\Services::validation(),
+            'barang' => $this->barangModel->getBarang($id)
+        ];
+        return view('barang/ubah', $data);
+    }
+
+    public function update($id)
+    {
+        $this->barangModel->save([
+            'id' => $id,
+            'nama_barang' => $this->request->getVar('nama_barang'),
+            'harga_jual' => $this->request->getVar('harga_jual'),
+            'jumlah' => $this->request->getVar('jumlah'),
+        ]);
+ 
+        session()->setFlashdata('pesan', 'Data berhasil diubah.');
+ 
+        return redirect()->to(base_url('/PHP/UTS-Semester-6/public/barang/')); 
     }
 }
