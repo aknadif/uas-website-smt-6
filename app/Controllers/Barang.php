@@ -50,7 +50,7 @@ class Barang extends BaseController{
             'nama_barang' => 'required'
         ])){
             $validation = \Config\Services::validation();
-            return redirect()->to('/PHP/UTS-Semester-6/public/barang/create')->with('validation', $validation);
+            return redirect()->to('/barang/create')->with('validation', $validation);
         }
 
        $this->barangModel->save([
@@ -61,14 +61,14 @@ class Barang extends BaseController{
 
        session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
 
-       return redirect()->to(base_url('/PHP/UTS-Semester-6/public/barang/')); 
+       return redirect()->to(base_url('/barang')); 
     }
 
     public function delete($id)
     {
         $this->barangModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus.');
-        return redirect()->to(base_url('/PHP/UTS-Semester-6/public/barang/')); 
+        return redirect()->to(base_url('/barang')); 
     }
 
     public function ubah($id)
@@ -93,6 +93,6 @@ class Barang extends BaseController{
  
         session()->setFlashdata('pesan', 'Data berhasil diubah.');
  
-        return redirect()->to(base_url('/PHP/UTS-Semester-6/public/barang/')); 
+        return redirect()->to(base_url('/barang')); 
     }
 }

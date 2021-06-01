@@ -1,0 +1,22 @@
+body {
+  background-color: #a8dadc;
+}
+h1 {
+  color: #1d3557;
+}
+.btn-tambah {
+  color: #f1faee;
+  background-color: #457b9d;
+}
+.container {
+  width: 800px;
+  background-color: #f1faee;
+  margin-top: 200px;
+  border-radius: 25px;
+}
+th {
+  color: #1d3557;
+}
+/* End Index */
+
+/* Start Create */

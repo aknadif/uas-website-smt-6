@@ -2,11 +2,32 @@
 
 <?= $this->section('content'); ?>
 
+<style>
+body {
+  background-color: #a8dadc;
+}
+h1 {
+  color: #1d3557;
+}
+label{
+    color: #1d3557;  
+}
+.container {
+  width: 800px;
+  background-color: #f1faee;
+  margin-top: 200px;
+  border-radius: 25px;
+}
+.btn-tambah {
+  color: #f1faee;
+  background-color: #457b9d;
+}
+</style>
 <div class="container">
     <div class="row">
         <div class="col">
             <h1 class="text-center fw-bold mt-4">Tambah Barang Baru</h1>
-            <form action="<?= base_url('/PHP/UTS-Semester-6/public/barang/save');?>" method="post" enctype="multipart/form-data" class="mt-4">
+            <form action="<?= base_url('/barang/save');?>" method="post" enctype="multipart/form-data" class="mt-4">
             <?= csrf_field(); ?>
                         <div class="form-group  mb-3">
                             <label for="nama_barang" class="fw-bold">Nama Barang</label>
@@ -22,8 +43,8 @@
                         </div>
 
                 <div class="text-end">    
-                <a href="<?= base_url('/PHP/UTS-Semester-6/public/barang/');?>" type="button" class="btn btn-secondary">Back</a>
-                <button type="submit" name="submit" class="btn btn-primary">Create</button>
+                <a href="<?= base_url('/barang');?>" type="button" class="btn btn-secondary mb-4">Back</a>
+                <button type="submit" name="submit" class="btn btn-tambah mb-4">Create</button>
                 </div>
 
                 												
