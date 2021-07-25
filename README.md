@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">UAS Pemrograman Website</h1>
+<h1 style="text-align: center;">UAS Pemrograman Website Semester 6</h1>
 
 <h2 style="text-align: center;">Membuat Sistem Informasi Restaurant</h2>
 
